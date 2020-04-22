@@ -33,14 +33,41 @@ public class Gantt extends PApplet
 		for (Task task : tasks)
 		{
 			println(task.toString());
-			//println(task.getPhase() + '\t' + task.getStart() + '\t' + task.getEnd() + '\n');
 		}
 	}
 
 	public void displayTasks()
 	{
+
+		int x1;
+		int x2;
+		int y = 90;
+
+		//each rect changes by x21 and y50 in each direction
 		//setting of HSB colour mode for background
-		colorMode(HSB, 100);
+		colorMode(HSB);
+		noStroke();
+		//rect(150,65,84,40, 6);
+
+		for (Task task: tasks)
+		{
+			x1 = task.getStart();
+			x2 = task.getEnd();
+
+			x1--;
+			x2--;
+
+			x1 = (x1 * 21) + 150;
+			x2 = x2 * 21;
+
+			rect(x1, y, x2, 40);
+
+			y += 50;
+			y = y % 600;
+		}
+
+
+		
 
 
 	}
@@ -60,7 +87,7 @@ public class Gantt extends PApplet
 	
 			textSize(15);
 			textAlign(LEFT);
-			text(s , x1, y1);
+			text(s, x1, y1);
 			y1 += 50;
 		}
 	}
@@ -130,5 +157,6 @@ public class Gantt extends PApplet
 		drawPhases();
 		drawDays();
 		drawLine();
+		displayTasks();
 	}
 }
