@@ -42,34 +42,37 @@ public class Gantt extends PApplet
 		int x1;
 		int x2;
 		int y = 90;
-
+		int difference;
+		int colourChange = 11;
+		int i = 0;
+		
 		//each rect changes by x21 and y50 in each direction
 		//setting of HSB colour mode for background
-		colorMode(HSB);
+		colorMode(HSB, 100);
 		noStroke();
-		//rect(150,65,84,40, 6);
 
 		for (Task task: tasks)
 		{
+			colourChange += 10;
+			i += colourChange;
+			
 			x1 = task.getStart();
 			x2 = task.getEnd();
+
+			difference = x2 - x1;
 
 			x1--;
 			x2--;
 
 			x1 = (x1 * 21) + 150;
-			x2 = x2 * 21;
+			x2 = difference * 21;
 
-			rect(x1, y, x2, 40);
+			rect(x1, y, x2, 40, 6);
 
-			y += 50;
-			y = y % 600;
+			y += 50; //increment by 50 to allow for each tasks's rect
+			y = y % 600; //cannot go above 600, error checking 
 		}
-
-
 		
-
-
 	}
 
 	public void drawPhases()
