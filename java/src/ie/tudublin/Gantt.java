@@ -6,7 +6,6 @@ import processing.data.Table;
 import processing.data.TableRow;
 import java.util.ArrayList;
 
-import javax.tools.ForwardingJavaFileManager;
 
 public class Gantt extends PApplet
 {	
@@ -52,7 +51,7 @@ public class Gantt extends PApplet
 		
 		//x1 and y1 variables for text
 		int x1 = 40;
-		int y1 = 80;
+		int y1 = 90;
 		
 		for (Task task : tasks)
 		{
@@ -60,6 +59,7 @@ public class Gantt extends PApplet
 			String s = task.getPhase();
 	
 			textSize(15);
+			textAlign(LEFT);
 			text(s , x1, y1);
 			y1 += 50;
 		}
@@ -96,10 +96,9 @@ public class Gantt extends PApplet
 			line(x1,y1,x1,lineEnd);
 			x1 += 21;
 
+			//126 added to val as it is halfway point, modulo 255 to allow the grey and white colour on lines
 			strokeVal = (strokeVal + 126) % 255;
 		}
-		
-
 	}	
 	
 	public String intToString(int a)
