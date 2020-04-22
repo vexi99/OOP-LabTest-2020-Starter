@@ -38,7 +38,22 @@ public class Gantt extends PApplet
 
 	public void displayTasks()
 	{
-		
+		//setting of HSB colour mode for background
+		colorMode(HSB, 100);
+
+
+	}
+
+	public void drawBackground()
+	{
+		for (Task task : tasks)
+		{
+			//for loop to iterate through arrayList
+			task.getPhase();
+
+		}
+
+
 	}
 	
 	public void mousePressed()
@@ -60,7 +75,7 @@ public class Gantt extends PApplet
 	public void draw()
 	{	
 		background(0);
-
+		drawBackground();
 		//start of writing names
 		
 	}
