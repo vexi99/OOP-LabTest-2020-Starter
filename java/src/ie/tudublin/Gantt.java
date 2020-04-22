@@ -6,6 +6,8 @@ import processing.data.Table;
 import processing.data.TableRow;
 import java.util.ArrayList;
 
+import javax.tools.ForwardingJavaFileManager;
+
 public class Gantt extends PApplet
 {	
 	ArrayList<Task> tasks = new ArrayList<Task>();
@@ -65,12 +67,12 @@ public class Gantt extends PApplet
 
 	public void drawDays()
 	{
-		//numbers start at 200,40
 		int x1 = 150;
-		int y1 = 40;
+		int y1 = 30;
 		int i = 1;
 		String s;
 
+		//Loop to print out each day number using a for loop.
 		for (i=1; i<31;i++)
 		{
 			s = intToString(i);
@@ -79,6 +81,26 @@ public class Gantt extends PApplet
 			x1 += 21;
 		}
 	}
+
+	public void drawLine()
+	{
+		//drawLine method used to draw the day lines on the graph.
+		int x1 = 150;
+		int y1 = 60;
+		int lineEnd = 550;
+		int strokeVal = 255;
+
+		for(int i = 0; i<30; i++)
+		{
+			stroke(strokeVal);
+			line(x1,y1,x1,lineEnd);
+			x1 += 21;
+
+			strokeVal = (strokeVal + 126) % 255;
+		}
+		
+
+	}	
 	
 	public String intToString(int a)
 	{
@@ -108,6 +130,6 @@ public class Gantt extends PApplet
 		background(0);
 		drawPhases();
 		drawDays();
-		
+		drawLine();
 	}
 }
