@@ -46,11 +46,18 @@ public class Gantt extends PApplet
 
 	public void drawBackground()
 	{
+		//drawBackground works by getting the name of the Tasks from the CSV file, looping through the arraylist to print each to output.
+		int x1 = 40;
+		int y1 = 40;
+		
 		for (Task task : tasks)
 		{
 			//for loop to iterate through arrayList
-			task.getPhase();
-
+			String s = task.getPhase();
+	
+			textSize(15);
+			text(s , x1, y1);
+			y1 += 50;
 		}
 
 
@@ -76,7 +83,7 @@ public class Gantt extends PApplet
 	{	
 		background(0);
 		drawBackground();
-		//start of writing names
+		
 		
 	}
 }
