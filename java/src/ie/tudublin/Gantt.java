@@ -44,11 +44,13 @@ public class Gantt extends PApplet
 
 	}
 
-	public void drawBackground()
+	public void drawPhases()
 	{
-		//drawBackground works by getting the name of the Tasks from the CSV file, looping through the arraylist to print each to output.
+		//drawPhases works by getting the name of the Tasks from the CSV file, looping through the arraylist to print each to output.
+		
+		//x1 and y1 variables for text
 		int x1 = 40;
-		int y1 = 40;
+		int y1 = 80;
 		
 		for (Task task : tasks)
 		{
@@ -59,10 +61,32 @@ public class Gantt extends PApplet
 			text(s , x1, y1);
 			y1 += 50;
 		}
+	}
 
+	public void drawDays()
+	{
+		//numbers start at 200,40
+		int x1 = 150;
+		int y1 = 40;
+		int i = 1;
+		String s;
 
+		for (i=1; i<31;i++)
+		{
+			s = intToString(i);
+			textAlign(CENTER, CENTER);
+			text(s, x1, y1);
+			x1 += 21;
+		}
 	}
 	
+	public String intToString(int a)
+	{
+		//converts an integer to a string to pass back to drawDays.
+		String s = Integer.toString(a);
+		return s;
+	}
+
 	public void mousePressed()
 	{
 		println("Mouse pressed");	
@@ -82,8 +106,8 @@ public class Gantt extends PApplet
 	public void draw()
 	{	
 		background(0);
-		drawBackground();
-		
+		drawPhases();
+		drawDays();
 		
 	}
 }
