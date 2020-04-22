@@ -42,9 +42,7 @@ public class Gantt extends PApplet
 		int x1;
 		int x2;
 		int y = 90;
-		int difference;
-		int colourChange = 11;
-		int i = 0;
+		int difference; //variable to track difference between x1 and x2
 		
 		//each rect changes by x21 and y50 in each direction
 		//setting of HSB colour mode for background
@@ -53,9 +51,6 @@ public class Gantt extends PApplet
 
 		for (Task task: tasks)
 		{
-			colourChange += 10;
-			i += colourChange;
-			
 			x1 = task.getStart();
 			x2 = task.getEnd();
 
